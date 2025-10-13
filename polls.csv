@@ -1,0 +1,321 @@
+pollster,date,sample,Approve,Disapprove,spread
+Rasmussen Reports,2025-10-12,1500 LV,51,48,Spread+3
+Reuters/Ipsos,2025-10-07,1154 A,40,58,Spread-18
+Quantus Insights,2025-10-08,1000 RV,47,51,Spread-4
+Economist/YouGov,2025-10-06,1490 RV,43,55,Spread-12
+RMG Research*,2025-10-09,3000 RV,51,48,Spread+3
+Morning Consult,2025-10-05,2200 RV,46,52,Spread-6
+CBS News,2025-10-03,2441 A,42,58,Spread-16
+Harvard-Harris,2025-10-02,2413 RV,46,50,Spread-4
+InsiderAdvantage,2025-09-30,800 LV,52,46,Spread+6
+I&I/TIPP,2025-10-02,1459 A,42,46,Spread-4
+Economist/YouGov,2025-09-29,1518 RV,43,54,Spread-11
+Morning Consult,2025-09-28,2202 RV,46,52,Spread-6
+Yahoo News/YouGov,2025-09-29,1129 RV,44,55,Spread-11
+RMG Research*,2025-10-01,3000 RV,51,48,Spread+3
+Pew Research,2025-09-28,3445 A,40,58,Spread-18
+NY Times/Siena,2025-09-27,1313 RV,43,54,Spread-11
+NPR/PBS/Marist,2025-09-26,1329 RV,42,53,Spread-11
+Economist/YouGov,2025-09-22,1392 RV,43,55,Spread-12
+Quantus Insights,2025-09-21,1000 LV,48,50,Spread-2
+Morning Consult,2025-09-21,2201 RV,46,52,Spread-6
+Reuters/Ipsos,2025-09-21,1019 A,41,58,Spread-17
+RMG Research*,2025-09-24,3000 RV,50,49,Spread+1
+Rasmussen Reports,2025-09-23,1500 LV,48,50,Spread-2
+Marquette,2025-09-24,1043 A,43,57,Spread-14
+Quinnipiac,2025-09-21,1276 RV,38,54,Spread-16
+Atlas Intel,2025-09-16,1066 A,47,52,Spread-5
+Economist/YouGov,2025-09-15,1420 RV,43,55,Spread-12
+Morning Consult,2025-09-14,2204 RV,46,52,Spread-6
+RMG Research*,2025-09-17,3000 RV,51,47,Spread+4
+Wash Post/Ipsos,2025-09-15,RV,45,55,Spread-10
+AP/NORC**,2025-09-15,1183 A,39,60,Spread-21
+FOX News,2025-09-09,1004 RV,46,54,Spread-8
+Gallup,2025-09-16,1000 A,40,56,Spread-16
+RMG Research*,2025-09-11,3000 RV,50,48,Spread+2
+Reuters/Ipsos,2025-09-09,1084 A,42,56,Spread-14
+Economist/YouGov,2025-09-08,1487 RV,43,54,Spread-11
+Morning Consult,2025-09-07,2200 RV,45,52,Spread-7
+CBS News,2025-09-05,2385 A,44,56,Spread-12
+Economist/YouGov,2025-09-02,1549 RV,44,55,Spread-11
+Yahoo News,2025-09-02,1138 RV,42,56,Spread-14
+RMG Research*,2025-09-03,3000 RV,50,48,Spread+2
+Rasmussen Reports,2025-09-03,1500 LV,48,51,Spread-3
+Morning Consult,2025-08-31,2202 RV,46,51,Spread-5
+I&I/TIPP,2025-08-29,1362 A,43,47,Spread-4
+Daily Mail,2025-09-01,867 RV,55,45,Spread+10
+Emerson,2025-08-26,1000 RV,45,47,Spread-2
+Quantus Insights,2025-08-26,1000 RV,48,51,Spread-3
+RMG Research*,2025-08-28,3000 RV,50,49,Spread+1
+Economist/YouGov,2025-08-25,1377 RV,43,55,Spread-12
+Morning Consult,2025-08-24,2200 RV,47,51,Spread-4
+Rasmussen Reports,2025-08-26,1500 LV,49,50,Spread-1
+Reuters/Ipsos,2025-08-24,1022 A,40,54,Spread-14
+AP/NORC**,2025-08-25,1182 A,45,53,Spread-8
+Quinnipiac,2025-08-25,1220 RV,37,55,Spread-18
+Harvard-Harris,2025-08-21,2025 RV,47,49,Spread-2
+NBC News Decision Desk,2025-09-01,30196 A,43,57,Spread-14
+InsiderAdvantage,2025-08-17,1000 LV,54,44,Spread+10
+RMG Research*,2025-08-21,3000 RV,49,48,Spread+1
+Morning Consult,2025-08-17,2201 RV,47,51,Spread-4
+Economist/YouGov,2025-08-18,1408 RV,43,54,Spread-11
+Rasmussen Reports,2025-08-19,1500 LV,49,49,Tie
+Reuters/Ipsos,2025-08-18,4446 A,40,54,Spread-14
+Quantus Insights,2025-08-13,1000 RV,47,51,Spread-4
+Economist/YouGov,2025-08-11,1474 RV,44,53,Spread-9
+RMG Research*,2025-08-14,3000 RV,48,50,Spread-2
+Morning Consult,2025-08-10,2200 RV,45,51,Spread-6
+Gallup,2025-08-20,1094 A,40,56,Spread-16
+Rasmussen Reports,2025-08-12,1500 LV,49,49,Tie
+Pew Research,2025-08-10,3554 A,38,60,Spread-22
+Economist/YouGov,2025-08-04,1528 RV,43,55,Spread-12
+RMG Research*,2025-08-07,3000 RV,50,49,Spread+1
+Morning Consult,2025-08-03,2201 RV,45,52,Spread-7
+Rasmussen Reports,2025-08-05,1500 LV,47,51,Spread-4
+CNBC,2025-08-03,1000 A,46,51,Spread-5
+IBD/TIPP,2025-08-01,1362 RV,45,46,Spread-1
+Economist/YouGov,2025-07-28,1610 RV,44,53,Spread-9
+Reuters/Ipsos,2025-07-27,1023 A,40,56,Spread-16
+RMG Research*,2025-07-31,3000 RV,50,48,Spread+2
+Rasmussen Reports,2025-07-29,1500 LV,48,51,Spread-3
+Morning Consult,2025-07-27,2203 RV,47,50,Spread-3
+Yahoo News,2025-07-28,1168 RV,44,54,Spread-10
+Trafalgar/InsiderAdvantage,2025-07-23,1200 LV,50,48,Spread+2
+Quantus Insights,2025-07-23,1123 RV,47,50,Spread-3
+Daily Mail,2025-07-22,1007 RV,49,51,Spread-2
+Emerson,2025-07-22,1400 RV,46,47,Spread-1
+Economist/YouGov,2025-07-21,1551 RV,43,56,Spread-13
+FOX News,2025-07-21,1000 RV,46,54,Spread-8
+RMG Research*,2025-07-24,3000 RV,50,48,Spread+2
+Rasmussen Reports,2025-07-22,1500 LV,50,49,Spread+1
+Morning Consult,2025-07-20,2202 RV,45,52,Spread-7
+Wall Street Journal,2025-07-20,1500 RV,46,52,Spread-6
+CBS News,2025-07-18,2343 A,42,58,Spread-16
+Reuters/Ipsos,2025-07-16,1027 A,41,54,Spread-13
+Quantus Insights,2025-07-16,1000 RV,48,50,Spread-2
+Atlas Intel,2025-07-18,1935 A,44,55,Spread-11
+Gallup,2025-07-21,1002 A,37,58,Spread-21
+Big Data Poll,2025-07-14,3022 RV,48,49,Spread-1
+AP/NORC**,2025-07-14,1437 A,40,58,Spread-18
+Marquette,2025-07-16,1005 A,45,55,Spread-10
+Economist/YouGov,2025-07-14,1506 RV,43,54,Spread-11
+RMG Research*,2025-07-16,3000 RV,52,48,Spread+4
+Morning Consult,2025-07-13,2201 RV,47,50,Spread-3
+Rasmussen Reports,2025-07-15,1500 LV,48,50,Spread-2
+Quinnipiac,2025-07-14,1290 RV,40,54,Spread-14
+CNN,2025-07-13,RV,44,56,Spread-12
+Daily Mail,2025-07-10,1013 RV,48,52,Spread-4
+Harvard-Harris,2025-07-08,2044 RV,47,49,Spread-2
+Economist/YouGov,2025-07-07,1389 RV,43,54,Spread-11
+Morning Consult,2025-07-06,2203 RV,45,52,Spread-7
+Rasmussen Reports,2025-07-08,1500 LV,49,49,Tie
+RMG Research*,2025-07-10,3000 RV,50,47,Spread+3
+Quantus Insights,2025-07-02,1000 RV,47,49,Spread-2
+Economist/YouGov,2025-06-30,1491 RV,45,53,Spread-8
+Yahoo News,2025-06-30,1074 RV,45,54,Spread-9
+Morning Consult,2025-06-29,2202 RV,47,50,Spread-3
+Rasmussen Reports,2025-06-30,1500 LV,51,47,Spread+4
+I&I/TIPP,2025-06-27,1421 A,44,45,Spread-1
+Emerson,2025-06-25,1000 RV,45,46,Spread-1
+NPR/PBS/Marist,2025-06-25,1206 RV,44,53,Spread-9
+Quantus Insights,2025-06-25,1000 RV,47,50,Spread-3
+Quinnipiac,2025-06-24,979 RV,41,54,Spread-13
+RMG Research*,2025-06-26,3000 RV,51,47,Spread+4
+Reuters/Ipsos,2025-06-23,1139 A,41,57,Spread-16
+Economist/YouGov,2025-06-23,1455 RV,43,54,Spread-11
+Morning Consult,2025-06-22,2205 RV,45,53,Spread-8
+Rasmussen Reports,2025-06-23,1500 LV,52,47,Spread+5
+Trafalgar Group,2025-06-20,1085 LV,54,45,Spread+9
+FOX News,2025-06-16,1003 RV,46,54,Spread-8
+InsiderAdvantage,2025-06-16,1000 LV,54,44,Spread+10
+RMG Research*,2025-06-19,3000 RV,53,46,Spread+7
+Economist/YouGov,2025-06-16,1351 RV,44,53,Spread-9
+Morning Consult,2025-06-15,2207 RV,46,52,Spread-6
+Reuters/Ipsos,2025-06-16,4258 A,42,54,Spread-12
+Rasmussen Reports,2025-06-16,1500 LV,52,47,Spread+5
+Harvard-Harris,2025-06-12,2097 RV,46,50,Spread-4
+Daily Mail,2025-06-11,1807 RV,48,52,Spread-4
+Gallup,2025-06-19,1000 A,40,57,Spread-17
+Quantus Insights,2025-06-11,1000 RV,48,49,Spread-1
+Economist/YouGov,2025-06-09,1397 RV,45,53,Spread-8
+Quinnipiac,2025-06-09,1265 RV,38,54,Spread-16
+AP/NORC**,2025-06-09,1158 A,39,60,Spread-21
+Morning Consult,2025-06-08,1867 RV,47,51,Spread-4
+Rasmussen Reports,2025-06-09,1500 LV,51,48,Spread+3
+RMG Research*,2025-06-12,3000 RV,52,46,Spread+6
+Pew Research,2025-06-08,5044 A,41,58,Spread-17
+CBS News,2025-06-06,2428 A,45,55,Spread-10
+NBC News Decision Desk,2025-06-10,19410 A,45,55,Spread-10
+Daily Mail,2025-06-06,1006 RV,47,53,Spread-6
+Quantus Insights,2025-06-04,1000 RV,49,48,Spread+1
+Economist/YouGov,2025-06-02,1436 RV,46,51,Spread-5
+Trafalgar Group,2025-06-01,1098 LV,54,46,Spread+8
+Morning Consult,2025-06-01,2205 RV,46,51,Spread-5
+RMG Research*,2025-06-03,3000 RV,51,46,Spread+5
+I&I/TIPP,2025-05-30,1395 A,43,45,Spread-2
+Rasmussen Reports,2025-05-29,1500 LV,53,46,Spread+7
+Economist/YouGov,2025-05-26,1486 RV,46,52,Spread-6
+Yahoo News,2025-05-27,1560 A,41,54,Spread-13
+RMG Research*,2025-05-29,3000 RV,49,50,Spread-1
+Morning Consult,2025-05-25,2208 RV,48,51,Spread-3
+Atlas Intel,2025-05-27,3469 A,45,54,Spread-9
+Rasmussen Reports,2025-05-22,1500 LV,50,49,Spread+1
+Quantus Insights,2025-05-20,1000 RV,48,48,Tie
+Daily Kos/Civiqs,2025-05-20,1018 RV,47,52,Spread-5
+InsiderAdvantage,2025-05-19,1000 LV,55,44,Spread+11
+Economist/YouGov,2025-05-19,1558 RV,45,52,Spread-7
+Morning Consult,2025-05-18,2200 RV,48,50,Spread-2
+Reuters/Ipsos,2025-05-18,1024 A,42,52,Spread-10
+RMG Research*,2025-05-21,3000 RV,48,50,Spread-2
+Harvard-Harris,2025-05-15,1903 RV,47,48,Spread-1
+Daily Mail,2025-05-14,1003 RV,50,50,Tie
+Marquette,2025-05-15,1004 A,46,54,Spread-8
+Reuters/Ipsos,2025-05-13,1163 A,44,52,Spread-8
+Rasmussen Reports,2025-05-15,1500 LV,51,48,Spread+3
+RMG Research*,2025-05-15,3000 RV,52,48,Spread+4
+Economist/YouGov,2025-05-12,1610 RV,45,52,Spread-7
+Morning Consult,2025-05-11,2221 RV,46,52,Spread-6
+Gallup,2025-05-18,1003 A,43,53,Spread-10
+Quantus Insights,2025-05-07,1000 RV,48,48,Tie
+Rasmussen Reports,2025-05-08,1500 LV,51,48,Spread+3
+Big Data Poll,2025-05-05,3128 RV,48,47,Spread+1
+Economist/YouGov,2025-05-05,1693 RV,44,52,Spread-8
+Morning Consult,2025-05-04,2263 RV,46,52,Spread-6
+AP/NORC,2025-05-05,1175 A,41,57,Spread-16
+RMG Research*,2025-05-08,3000 RV,49,49,Tie
+I&I/TIPP,2025-05-02,1400 A,42,47,Spread-5
+Trafalgar/InsiderAdvantage,2025-05-01,1200 LV,46,44,Spread+2
+Rasmussen Reports,2025-05-01,1500 LV,50,49,Spread+1
+Emerson,2025-04-28,1000 RV,45,45,Tie
+Economist/YouGov,2025-04-28,1626 RV,43,54,Spread-11
+Yahoo News,2025-04-28,1071 RV,45,53,Spread-8
+Reuters/Ipsos,2025-04-27,1029 A,42,53,Spread-11
+RMG Research*,2025-05-01,3000 RV,49,48,Spread+1
+Daily Mail,2025-04-28,1006 RV,45,55,Spread-10
+Newsnation,2025-04-27,1448 RV,44,56,Spread-12
+CBS News,2025-04-25,2365 A,45,55,Spread-10
+NY Times/Siena,2025-04-24,913 RV,42,54,Spread-12
+Quantus Insights,2025-04-23,1000 RV,48,50,Spread-2
+NPR/PBS/Marist,2025-04-23,1324 RV,43,53,Spread-10
+Rasmussen Reports,2025-04-24,1500 LV,47,51,Spread-4
+CNN,2025-04-24,RV,43,57,Spread-14
+AP/NORC**,2025-04-21,1260 A,39,59,Spread-20
+RMG Research*,2025-04-24,3000 RV,49,48,Spread+1
+Economist/YouGov,2025-04-22,1446 RV,44,53,Spread-9
+ABC/Wash Post/Ipsos,2025-04-22,1992 RV,42,55,Spread-13
+FOX News,2025-04-21,1104 RV,44,55,Spread-11
+Morning Consult,2025-04-20,2207 RV,46,52,Spread-6
+Reuters/Ipsos,2025-04-21,4306 A,42,53,Spread-11
+Rasmussen Reports,2025-04-17,1500 LV,51,47,Spread+4
+Economist/YouGov,2025-04-15,1329 RV,45,53,Spread-8
+Daily Kos/Civiqs,2025-04-15,1124 RV,46,53,Spread-7
+Daily Mail,2025-04-14,1002 RV,54,46,Spread+8
+Atlas Intel,2025-04-14,2347 A,46,52,Spread-6
+Morning Consult,2025-04-13,2203 RV,45,52,Spread-7
+RMG Research*,2025-04-16,3000 RV,48,51,Spread-3
+CNBC,2025-04-13,1000 A,44,51,Spread-7
+Harvard-Harris,2025-04-10,2286 RV,48,46,Spread+2
+CBS News,2025-04-11,2410 A,47,53,Spread-6
+Pew Research,2025-04-13,3589 A,40,59,Spread-19
+Quantus Insights,2025-04-09,1000 RV,47,50,Spread-3
+Gallup,2025-04-14,1006 A,44,53,Spread-9
+Rasmussen Reports,2025-04-10,1500 LV,48,50,Spread-2
+Economist/YouGov,2025-04-08,1563 RV,45,52,Spread-7
+HarrisX,2025-04-07,1883 RV,47,49,Spread-2
+Quinnipiac,2025-04-07,1407 RV,41,53,Spread-12
+Morning Consult,2025-04-06,2207 RV,46,52,Spread-6
+RMG Research*,2025-04-10,3000 RV,49,48,Spread+1
+Cygnal,2025-04-03,1500 LV,47,51,Spread-4
+Daily Mail,2025-04-03,1000 RV,53,47,Spread+6
+Rasmussen Reports,2025-04-03,1500 LV,49,50,Spread-1
+Reuters/Ipsos,2025-04-02,1486 A,43,53,Spread-10
+Economist/YouGov,2025-04-01,1465 RV,46,51,Spread-5
+RMG Research*,2025-04-03,3000 RV,51,47,Spread+4
+Wall Street Journal,2025-04-01,1500 RV,46,51,Spread-5
+Harvard-Harris,2025-03-27,2746 RV,49,46,Spread+3
+CBS News,2025-03-28,2609 A,50,50,Tie
+TIPP,2025-03-28,1452 A,44,45,Spread-1
+Daily Mail,2025-03-27,1001 RV,49,51,Spread-2
+Quantus Insights,2025-03-27,1000 RV,49,46,Spread+3
+Rasmussen Reports,2025-03-27,1500 LV,50,49,Spread+1
+Economist/YouGov,2025-03-25,1440 RV,48,50,Spread-2
+RMG Research*,2025-03-27,3000 RV,52,45,Spread+7
+Marquette,2025-03-27,1021 A,46,54,Spread-8
+Reuters/Ipsos,2025-03-23,1030 A,45,51,Spread-6
+AP/NORC**,2025-03-24,1229 A,42,56,Spread-14
+Rasmussen Reports,2025-03-20,1500 LV,51,47,Spread+4
+Economist/YouGov,2025-03-18,1458 RV,47,50,Spread-3
+FOX News,2025-03-17,994 RV,49,51,Spread-2
+RMG Research*,2025-03-19,3000 RV,53,45,Spread+8
+Reuters/Ipsos,2025-03-12,1422 A,44,52,Spread-8
+Rasmussen Reports,2025-03-13,1500 LV,52,47,Spread+5
+Quantus Insights,2025-03-12,1000 RV,50,47,Spread+3
+Economist/YouGov,2025-03-11,1532 RV,48,49,Spread-1
+Atlas Intel,2025-03-12,2550 A,47,52,Spread-5
+NBC News,2025-03-11,1000 RV,47,51,Spread-4
+Emerson,2025-03-10,1000 RV,47,45,Spread+2
+Gallup,2025-03-16,1002 A,43,53,Spread-10
+RMG Research*,2025-03-13,3000 RV,54,44,Spread+10
+Quinnipiac,2025-03-10,1198 RV,42,53,Spread-11
+CNN,2025-03-09,RV,46,53,Spread-7
+Daily Mail,2025-03-07,1019 RV,49,51,Spread-2
+Trafalgar/InsiderAdvantage,2025-03-05,800 RV,50,45,Spread+5
+Rasmussen Reports,2025-03-06,1500 LV,50,48,Spread+2
+Reuters/Ipsos,2025-03-04,1174 A,44,51,Spread-7
+Economist/YouGov,2025-03-04,1491 RV,49,49,Tie
+Emerson,2025-03-03,1000 RV,48,43,Spread+5
+Daily Kos/Civiqs,2025-03-03,1031 RV,48,52,Spread-4
+CBS News,2025-02-28,2311 A,51,49,Spread+2
+I&I/TIPP,2025-02-28,1434 A,46,43,Spread+3
+RMG Research*,2025-02-28,3000 RV,53,45,Spread+8
+CNN,2025-02-28,RV,48,52,Spread-4
+Atlas Intel,2025-02-27,2849 A,50,50,Tie
+Rasmussen Reports,2025-02-27,1500 LV,50,48,Spread+2
+Quantus Insights,2025-02-26,1000 RV,51,45,Spread+6
+NPR/PBS/Marist,2025-02-26,1533 RV,45,51,Spread-6
+Daily Mail,2025-02-25,1001 RV,54,46,Spread+8
+Economist/YouGov,2025-02-25,1444 RV,48,47,Spread+1
+Morning Consult,2025-02-24,2225 RV,50,47,Spread+3
+Reuters/Ipsos,2025-02-23,1029 A,44,50,Spread-6
+RMG Research*,2025-02-21,3000 RV,53,44,Spread+9
+Harvard-Harris,2025-02-20,2443 RV,52,43,Spread+9
+Rasmussen Reports,2025-02-20,1500 LV,51,47,Spread+4
+Economist/YouGov,2025-02-18,1451 RV,50,47,Spread+3
+Emerson,2025-02-17,1000 RV,48,42,Spread+6
+Wash Post/Ipsos,2025-02-18,2177 RV,48,51,Spread-3
+Reuters/Ipsos,2025-02-18,4145 A,44,51,Spread-7
+Quinnipiac,2025-02-17,1039 RV,45,49,Spread-4
+CNN,2025-02-17,RV,46,54,Spread-8
+SurveyUSA,2025-02-16,2000 A,51,45,Spread+6
+RMG Research*,2025-02-14,3000 RV,55,43,Spread+12
+Quantus Insights,2025-02-12,1000 RV,53,44,Spread+9
+Economist/YouGov,2025-02-11,1430 RV,47,49,Spread-2
+Rasmussen Reports,2025-02-13,1500 LV,54,44,Spread+10
+Gallup,2025-02-16,1004 A,45,51,Spread-6
+Trafalgar/InsiderAdvantage,2025-02-09,1321 RV,54,45,Spread+9
+CBS News,2025-02-07,2175 A,53,47,Spread+6
+RMG Research*,2025-02-06,3000 RV,51,45,Spread+6
+Cygnal,2025-02-05,1500 LV,50,48,Spread+2
+Economist/YouGov,2025-02-04,1423 RV,48,47,Spread+1
+Quantus Insights,2025-02-03,1000 RV,52,45,Spread+7
+Morning Consult,2025-02-03,2303 RV,49,47,Spread+2
+Rasmussen Reports,2025-02-06,1500 LV,51,45,Spread+6
+Marquette,2025-02-05,1063 A,48,52,Spread-4
+Pew Research,2025-02-05,5086 A,47,51,Spread-4
+TIPP,2025-01-31,1478 A,46,41,Spread+5
+Fabrizio/Anzalone,2025-02-01,3000 RV,48,47,Spread+1
+RMG Research*,2025-01-31,4000 RV,53,43,Spread+10
+Rasmussen Reports,2025-01-30,1500 LV,52,45,Spread+7
+Emerson,2025-01-28,1000 RV,49,41,Spread+8
+Economist/YouGov,2025-01-28,1376 RV,50,46,Spread+4
+Quinnipiac,2025-01-27,1019 RV,46,43,Spread+3
+Morning Consult,2025-01-26,2302 RV,52,44,Spread+8
+Reuters/Ipsos,2025-01-26,1034 A,45,46,Spread-1
+Gallup,2025-01-27,1001 A,47,48,Spread-1
+Quantus Insights,2025-01-23,1000 RV,54,40,Spread+14
+RMG Research*,2025-01-23,3000 RV,57,39,Spread+18
+Atlas Intel,2025-01-23,1882 A,50,50,Tie
+Rasmussen Reports,2025-01-23,1667 LV,53,42,Spread+11
+Reuters/Ipsos,2025-01-21,1077 A,47,41,Spread+6
+Big Data Poll,2025-01-22,2979 RV,56,37,Spread+19
+InsiderAdvantage,2025-01-20,800 RV,56,39,Spread+17
