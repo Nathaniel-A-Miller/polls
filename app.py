@@ -12,8 +12,8 @@ def get_last_updated(repo_owner, repo_name, file_path):
     if response.status_code == 200 and response.json():
         commit_date = response.json()[0]["commit"]["committer"]["date"]
         dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00"))
-        # Format: October 13, 2025 — 09:42 UTC
-        return dt.strftime("%B %d, %Y — %H:%M %Z")
+        # Format: October 13, 2025, 09:42 UTC
+        return dt.strftime("%B %d, %Y, %H:%M %Z")
     return "Unknown"
 
 # --- Best-ranked pollsters ---
