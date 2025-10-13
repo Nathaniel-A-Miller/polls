@@ -1,6 +1,22 @@
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
+# --- Best-ranked pollsters ---
+best_ranked_pollsters = [
+    "NY Times/Siena",
+    "SurveyUSA",
+    "Marquette",
+    "Atlas Intel",
+    "Cygnal",
+    "I&I/TIPP",
+    "Emerson",
+    "CBS News",
+    "Quinnipiac",
+    "University of Connecticut",
+    "YouGov",
+    "Elon University",
+]
 
 # --- Page layout ---
 st.set_page_config(layout="wide")
@@ -26,45 +42,43 @@ df["date"] = pd.to_datetime(df["date"])
 
 # --- Sidebar: pollster selection ---
 pollsters = sorted(df["pollster"].unique())
-
-best_ranked_pollsters = [
-    "NY Times/Siena",
-    "SurveyUSA",
-    "Marquette",
-    "Atlas Intel",
-    "Cygnal",
-    "I&I/TIPP",
-    "Emerson",
-    "CBS News",
-    "Quinnipiac",
-    "University of Connecticut",
-    "YouGov",
-    "Elon University",
-]
-
 st.sidebar.markdown("### Select polls to include:")
 
-# Initialize dictionary for checkbox states
-if "selected_pollsters_dict" not in st.session_state:
-    st.session_state.selected_pollsters_dict = {poll: True for poll in pollsters}
+# Initialize session state
+if "select_all" not in st.session_state:
+    st.session_state["select_all"] = True
+if "best538" not in st.session_state:
+    st.session_state["best538"] = False
 
-# Sidebar buttons
+# --- Sidebar buttons ---
 col1, col2, col3 = st.sidebar.columns(3)
-if col1.button("Select all"):
-    st.session_state.selected_pollsters_dict = {poll: True for poll in pollsters}
-if col2.button("Deselect all"):
-    st.session_state.selected_pollsters_dict = {poll: False for poll in pollsters}
-if col3.button("538 Best-ranked pollsters"):
-    st.session_state.selected_pollsters_dict = {poll: (poll in best_ranked_pollsters) for poll in pollsters}
 
-# Display checkboxes
+with col1:
+    if st.button("Select All"):
+        st.session_state["select_all"] = True
+        st.session_state["best538"] = False
+
+with col2:
+    if st.button("Deselect All"):
+        st.session_state["select_all"] = False
+        st.session_state["best538"] = False
+
+with col3:
+    if st.button("538 Best pollsters"):
+        st.session_state["select_all"] = False
+        st.session_state["best538"] = True
+
+# --- Checkbox list ---
+selected_pollsters_dict = {}
 for poll in pollsters:
-    st.session_state.selected_pollsters_dict[poll] = st.sidebar.checkbox(
-        poll, value=st.session_state.selected_pollsters_dict.get(poll, True)
-    )
+    if st.session_state["best538"]:
+        default = poll in best_ranked_pollsters
+    else:
+        default = st.session_state["select_all"]
+    selected_pollsters_dict[poll] = st.sidebar.checkbox(poll, value=default)
 
-# Build list of selected pollsters
-selected_pollsters = [poll for poll, selected in st.session_state.selected_pollsters_dict.items() if selected]
+# List of pollsters currently selected
+selected_pollsters = [poll for poll, selected in selected_pollsters_dict.items() if selected]
 
 # Filter data based on selection
 filtered_df = df[df["pollster"].isin(selected_pollsters)]
@@ -78,29 +92,62 @@ daily_avg = (
 )
 
 # Smoothing span slider
-span_value = st.sidebar.slider("Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5)
+span_value = st.sidebar.slider(
+    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5
+)
 daily_avg["smoothed"] = daily_avg["average"].ewm(span=span_value, adjust=False).mean()
 
-# --- Plot ---
-fig, ax = plt.subplots(figsize=(12, 6))
+# --- Plotly figure ---
+fig = go.Figure()
 
-# Plot each pollster as faint dashed line
+# Plot each pollster as faint dashed line with less transparency
 for poll in selected_pollsters:
     sub = filtered_df[filtered_df["pollster"] == poll]
-    ax.plot(sub["date"], sub["Approve"], linestyle="--", alpha=0.4, label=poll)
+    fig.add_trace(
+        go.Scatter(
+            x=sub["date"],
+            y=sub["Approve"],
+            mode="lines",
+            name=poll,
+            line=dict(dash="dot", width=1),
+            opacity=0.6,
+            hoverinfo="x+y+name",
+        )
+    )
 
 # Plot smoothed average as thick blue line
-ax.plot(daily_avg["date"], daily_avg["smoothed"], color="blue", linewidth=2.5, label="Smoothed Average")
+fig.add_trace(
+    go.Scatter(
+        x=daily_avg["date"],
+        y=daily_avg["smoothed"],
+        mode="lines",
+        name="Smoothed Average",
+        line=dict(color="blue", width=3),
+        hoverinfo="x+y+name",
+    )
+)
 
-ax.set_title("Trump Approval Polling Average")
-ax.set_xlabel("Date")
-ax.set_ylabel("Approve %")
-ax.grid(True)
+# Update layout with mobile-friendly legend below the chart
+fig.update_layout(
+    title="Trump Approval Polling Average",
+    xaxis_title="Date",
+    yaxis_title="Approve %",
+    hovermode="x unified",
+    height=700,  # taller for mobile readability
+    legend=dict(
+        orientation="h",
+        y=-0.3,
+        x=0.5,
+        xanchor="center",
+        yanchor="top",
+        bordercolor="LightGray",
+        borderwidth=1,
+    ),
+    margin=dict(l=50, r=50, t=80, b=120),
+)
 
-# External legend
-ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-
-st.pyplot(fig)
+# Display interactive Plotly chart in Streamlit
+st.plotly_chart(fig, use_container_width=True)
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
