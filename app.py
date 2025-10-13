@@ -249,6 +249,9 @@ try:
 
 except Exception as e:
     st.write("⚠️ Could not fetch last update time.")
+    st.write(f"Status code: {r.status_code}")
+    st.write(commit_data)
+
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
