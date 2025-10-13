@@ -84,7 +84,7 @@ filtered_df = df[df["pollster"].isin(selected_pollsters)]
 
 # --- Exponential smoothing ---
 span_value = st.sidebar.slider(
-    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5
+    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=10
 )
 
 # Approval averages
