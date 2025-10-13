@@ -217,6 +217,9 @@ st.plotly_chart(fig, use_container_width=True)
 # Foonote on "538 Best Pollsters" button
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
+# Last updated
+st.write("Last updated October 13, 2025 2:52 PM Mountain Time")
+
 # Optional: show filtered data
 with st.expander("Show filtered data"):
     st.dataframe(filtered_df)
