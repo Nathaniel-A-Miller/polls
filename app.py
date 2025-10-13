@@ -232,7 +232,7 @@ def get_last_updated(repo_owner, repo_name, file_path):
         return dt.strftime("%B %d, %Y, %H:%M %Z")
     return "Unknown"
 
-last_updated = get_last_updated("yourusername", "yourrepo", "polls.csv")
+last_updated = get_last_updated("Nathaniel-A-Miller", "polls", "polls.csv")
 st.markdown(f"📅 **Data last updated:** {last_updated}")
 
 # Optional: show filtered data
