@@ -28,12 +28,25 @@ df["date"] = pd.to_datetime(df["date"])
 pollsters = sorted(df["pollster"].unique())
 st.sidebar.markdown("### Select polls to include:")
 
-# Use checkboxes so all pollsters are always visible
+# --- Select All / Deselect All buttons ---
+if "select_all" not in st.session_state:
+    st.session_state["select_all"] = True  # default all selected
+
+col1, col2 = st.sidebar.columns(2)
+with col1:
+    if st.button("Select All"):
+        st.session_state["select_all"] = True
+with col2:
+    if st.button("Deselect All"):
+        st.session_state["select_all"] = False
+
+# --- Checkbox list ---
 selected_pollsters_dict = {}
 for poll in pollsters:
-    selected_pollsters_dict[poll] = st.sidebar.checkbox(poll, value=True)
+    default = st.session_state["select_all"]
+    selected_pollsters_dict[poll] = st.sidebar.checkbox(poll, value=default)
 
-# Build list of selected pollsters
+# List of pollsters currently selected
 selected_pollsters = [poll for poll, selected in selected_pollsters_dict.items() if selected]
 
 # Filter data based on selection
@@ -66,7 +79,7 @@ for poll in selected_pollsters:
             mode="lines",
             name=poll,
             line=dict(dash="dot", width=1),
-            opacity=0.6,  # less transparent
+            opacity=0.6,
             hoverinfo="x+y+name",
         )
     )
@@ -89,17 +102,17 @@ fig.update_layout(
     xaxis_title="Date",
     yaxis_title="Approve %",
     hovermode="x unified",
-    height=700,
+    height=700,  # taller for mobile readability
     legend=dict(
-        orientation="h",   # horizontal legend
-        y=-0.3,            # below the chart
+        orientation="h",
+        y=-0.3,
         x=0.5,
         xanchor="center",
         yanchor="top",
         bordercolor="LightGray",
         borderwidth=1,
     ),
-    margin=dict(l=50, r=50, t=80, b=120),  # increased bottom margin for legend
+    margin=dict(l=50, r=50, t=80, b=120),
 )
 
 # Display interactive Plotly chart in Streamlit
