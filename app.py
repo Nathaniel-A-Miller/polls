@@ -56,7 +56,7 @@ daily_avg["smoothed"] = daily_avg["average"].ewm(span=span_value, adjust=False).
 # --- Plotly figure ---
 fig = go.Figure()
 
-# Plot each pollster as faint dashed line
+# Plot each pollster as faint dashed line with less transparency
 for poll in selected_pollsters:
     sub = filtered_df[filtered_df["pollster"] == poll]
     fig.add_trace(
@@ -66,22 +66,10 @@ for poll in selected_pollsters:
             mode="lines",
             name=poll,
             line=dict(dash="dot", width=1),
-            opacity=0.6,
+            opacity=0.6,  # less transparent
             hoverinfo="x+y+name",
         )
     )
-
-# # Plot raw average as thin red line
-# fig.add_trace(
-#     go.Scatter(
-#         x=daily_avg["date"],
-#         y=daily_avg["average"],
-#         mode="lines",
-#         name="Average",
-#         line=dict(color="red", width=2),
-#         hoverinfo="x+y+name",
-#     )
-# )
 
 # Plot smoothed average as thick blue line
 fig.add_trace(
@@ -95,21 +83,22 @@ fig.add_trace(
     )
 )
 
-# Update layout
+# Update layout with mobile-friendly legend below the chart
 fig.update_layout(
     title="Trump Approval Polling Average",
     xaxis_title="Date",
     yaxis_title="Approve %",
     hovermode="x unified",
     legend=dict(
-        y=0.5,
-        x=1.05,
-        xanchor="left",
-        yanchor="middle",
+        orientation="h",   # horizontal legend
+        y=-0.3,            # below the chart
+        x=0.5,
+        xanchor="center",
+        yanchor="top",
         bordercolor="LightGray",
         borderwidth=1,
     ),
-    margin=dict(l=50, r=150, t=80, b=50),
+    margin=dict(l=50, r=50, t=80, b=120),  # increased bottom margin for legend
 )
 
 # Display interactive Plotly chart in Streamlit
