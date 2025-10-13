@@ -223,34 +223,37 @@ st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeig
 # last_updated = get_last_updated("yourusername", "yourrepo", "polls.csv")
 # st.markdown(f"📅 **Data last updated:** {last_updated}")
 
-# --- GitHub API: Get last update time for polls.csv ---
-repo_owner = "Nathaniel-A-Miller"
-repo_name = "polls"
-file_path = "polls.csv"
+# --- CONFIG ---
+repo_owner = "Nathaniel-A-Miller"  # GitHub username
+repo_name = "polls"                 # Repo name
+file_path = "polls.csv"             # Exact relative path in the repo
+github_token = os.getenv("GITHUB_TOKEN")  # Optional token for private repos
 
-url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
-params = {"path": file_path, "page": 1, "per_page": 1}
+headers = {}
+if github_token:
+    headers["Authorization"] = f"token {github_token}"
 
+# --- Fetch last updated time ---
 try:
-    r = requests.get(url, params=params)
+    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
+    params = {"path": file_path, "page": 1, "per_page": 1}
+    r = requests.get(url, params=params, headers=headers)
     r.raise_for_status()
-    st.write(f"Status code: {r.status_code}")
-    st.write(commit_data)
     commit_data = r.json()
 
     if commit_data:
+        # Get UTC timestamp of last commit
         utc_str = commit_data[0]["commit"]["committer"]["date"]
-        # Parse GitHub UTC timestamp
         utc_dt = datetime.strptime(utc_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-        # Convert to local system time (auto-adjusts for DST)
+        # Convert to local timezone
         local_dt = utc_dt.astimezone()
         formatted_time = local_dt.strftime("%B %d, %Y at %I:%M %p %Z")
-        st.write(f"📅 **Last updated:** {formatted_time}")
+        st.write(f"📅 **Data last updated:** {formatted_time}")
     else:
-        st.write("📅 Last updated: Unknown")
+        st.write("📅 Last updated: Unknown (check file path)")
 
 except Exception as e:
-    st.write("⚠️ Could not fetch last update time.")
+    st.write(f"⚠️ Could not fetch last update time. Error: {e}")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
