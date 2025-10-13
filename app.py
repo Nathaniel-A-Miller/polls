@@ -5,16 +5,32 @@ import requests
 from datetime import datetime
 
 
-def get_last_updated(repo_owner, repo_name, file_path):
-    url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
-    params = {"path": file_path, "page": 1, "per_page": 1}
-    response = requests.get(url, params=params)
-    if response.status_code == 200 and response.json():
-        commit_date = response.json()[0]["commit"]["committer"]["date"]
-        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00"))
-        # Format: October 13, 2025, 09:42 UTC
-        return dt.strftime("%B %d, %Y, %H:%M %Z")
-    return "Unknown"
+# --- GitHub API: Get last update time for polls.csv ---
+repo_owner = "YOUR_GITHUB_USERNAME"
+repo_name = "YOUR_REPO_NAME"
+file_path = "polls.csv"
+
+url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
+params = {"path": file_path, "page": 1, "per_page": 1}
+
+try:
+    r = requests.get(url, params=params)
+    r.raise_for_status()
+    commit_data = r.json()
+
+    if commit_data:
+        utc_str = commit_data[0]["commit"]["committer"]["date"]
+        # Parse GitHub UTC timestamp
+        utc_dt = datetime.strptime(utc_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        # Convert to local system time (auto-adjusts for DST)
+        local_dt = utc_dt.astimezone()
+        formatted_time = local_dt.strftime("%B %d, %Y at %I:%M %p %Z")
+        st.write(f"📅 **Last updated:** {formatted_time}")
+    else:
+        st.write("📅 Last updated: Unknown")
+
+except Exception as e:
+    st.write("⚠️ Could not fetch last update time.")
 
 # --- Best-ranked pollsters ---
 best_ranked_pollsters = [
