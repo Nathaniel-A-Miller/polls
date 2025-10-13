@@ -219,21 +219,28 @@ st.plotly_chart(fig, use_container_width=True)
 # Foonote on "538 Best Pollsters" button
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
-# Get and display last data update time
-def get_last_updated(repo_owner, repo_name, file_path):
+# --- Get last update time from GitHub ---
+def get_last_update(repo_owner, repo_name, file_path):
+    """Fetch the last commit date for a specific file in a GitHub repo."""
     url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
-    params = {"path": file_path, "page": 1, "per_page": 1}
-    response = requests.get(url, params=params)
-    if response.status_code == 200 and response.json():
-        commit_date = response.json()[0]["commit"]["committer"]["date"]
-        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00"))
-        # Format: October 13, 2025, 09:42 UTC
-        return dt.strftime("%B %d, %Y, %H:%M %Z")
-    return "Unknown"
+    params = {"path": file_path, "per_page": 1}
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        commits = response.json()
+        if commits:
+            last_commit_date = commits[0]["commit"]["committer"]["date"]
+            # Convert to readable datetime
+            dt = datetime.strptime(last_commit_date, "%Y-%m-%dT%H:%M:%SZ")
+            return dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+        else:
+            return "No commits found for this file."
+    except Exception as e:
+        return f"Error fetching last update: {e}"
 
-# Example usage in Streamlit
-last_updated = get_last_updated("Nathaniel-A-Miller", "polls", "polls.csv")
-st.markdown(f"📅 **Data last updated:** {last_updated}")
+# Display last update
+last_update = get_last_update("Nathaniel-A-Miller", "polls", "polls.csv")
+st.info(f"📅 Last update of `polls.csv`: {last_update}")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
