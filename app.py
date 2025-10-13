@@ -71,17 +71,17 @@ for poll in selected_pollsters:
         )
     )
 
-# Plot raw average as thin red line
-fig.add_trace(
-    go.Scatter(
-        x=daily_avg["date"],
-        y=daily_avg["average"],
-        mode="lines",
-        name="Average",
-        line=dict(color="red", width=2),
-        hoverinfo="x+y+name",
-    )
-)
+# # Plot raw average as thin red line
+# fig.add_trace(
+#     go.Scatter(
+#         x=daily_avg["date"],
+#         y=daily_avg["average"],
+#         mode="lines",
+#         name="Average",
+#         line=dict(color="red", width=2),
+#         hoverinfo="x+y+name",
+#     )
+# )
 
 # Plot smoothed average as thick blue line
 fig.add_trace(
