@@ -220,42 +220,56 @@ st.plotly_chart(fig, use_container_width=True)
 # Foonote on "538 Best Pollsters" button
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
-# last_updated = get_last_updated("yourusername", "yourrepo", "polls.csv")
-# st.markdown(f"📅 **Data last updated:** {last_updated}")
 
-# --- CONFIG ---
-repo_owner = "Nathaniel-A-Miller"  # GitHub username
-repo_name = "polls"                 # Repo name
-file_path = "polls.csv"             # Exact relative path in the repo
-github_token = os.getenv("GITHUB_TOKEN")  # Optional token for private repos
+# display data last updated
 
-headers = {}
-if github_token:
-    headers["Authorization"] = f"token {github_token}"
+import pytz # <-- Essential for reliable timezone conversion
 
-# --- Fetch last updated time ---
+# --- Configuration ---
 repo_owner = "Nathaniel-A-Miller"
 repo_name = "polls"
 file_path = "polls.csv"
+headers = {} # Add your headers here if needed (e.g., GitHub personal access token)
 
+# Define the Target Timezone
+# You can change this to your preferred location (e.g., 'America/Los_Angeles', 'Europe/London')
+TARGET_TIMEZONE_NAME = 'America/New_York' 
+
+# --- Fetch last updated time and convert to target timezone ---
 try:
+    # 1. Fetch the commit data from the GitHub API
     url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
     params = {"path": file_path, "page": 1, "per_page": 1}
     r = requests.get(url, params=params, headers=headers)
-    r.raise_for_status()
+    r.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)
     commit_data = r.json()
 
     if commit_data:
-        # Get UTC timestamp of last commit
+        # 2. Parse the UTC timestamp string
+        # The GitHub API returns the time in ISO 8601 format with a 'Z' (Zulu time/UTC)
         utc_str = commit_data[0]["commit"]["committer"]["date"]
+        
+        # Parse the string into a datetime object and explicitly set its timezone to UTC
         utc_dt = datetime.strptime(utc_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-        # Convert to local timezone
-        local_dt = utc_dt.astimezone()
-        formatted_time = local_dt.strftime("%B %d, %Y at %I:%M %p %Z")
+        
+        # 3. Define and apply the target timezone conversion
+        # Create the pytz timezone object for the desired location
+        target_tz = pytz.timezone(TARGET_TIMEZONE_NAME)
+        
+        # Convert the UTC datetime object to the target timezone
+        local_dt = utc_dt.astimezone(target_tz)
+        
+        # 4. Format the output string
+        # The .tzname() function is used to get the proper localized timezone abbreviation (e.g., 'EST' or 'EDT')
+        formatted_time = local_dt.strftime("%B %d, %Y at %I:%M %p ") + local_dt.tzname()
+        
         st.write(f"📅 **Data last updated:** {formatted_time}")
+        
     else:
-        st.write("📅 Last updated: Unknown (check file path)")
+        st.write("📅 Last updated: Unknown (check file path or repo)")
 
+except requests.exceptions.HTTPError as http_err:
+    st.write(f"⚠️ Could not fetch last update time. HTTP Error: {http_err} (Check repo owner/name/file path)")
 except Exception as e:
     st.write(f"⚠️ Could not fetch last update time. Error: {e}")
 
