@@ -1,6 +1,19 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
+import requests
+from datetime import datetime
+
+# --- Get last updated date from GitHub ---
+def get_last_updated(repo_owner, repo_name, file_path):
+    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
+    params = {"path": file_path, "page": 1, "per_page": 1}
+    response = requests.get(url, params=params)
+    if response.status_code == 200 and response.json():
+        commit_date = response.json()[0]["commit"]["committer"]["date"]
+        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00"))
+        return dt.strftime("%B %d, %Y")
+    return "Unknown"
 
 # --- Best-ranked pollsters ---
 best_ranked_pollsters = [
@@ -218,7 +231,8 @@ st.plotly_chart(fig, use_container_width=True)
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
 # Last updated
-st.write("Last updated October 13, 2025 2:52 PM Mountain Time")
+last_updated = get_last_updated("yourusername", "yourrepo", "polls.csv")
+st.write(f"📅 Data last updated: **{last_updated}**")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
