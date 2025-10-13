@@ -102,7 +102,7 @@ daily_avg = (
 
 # Smoothing span slider
 span_value = st.sidebar.slider(
-    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5
+    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=10
 )
 daily_avg["smoothed"] = daily_avg["average"].ewm(span=span_value, adjust=False).mean()
 
