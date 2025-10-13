@@ -228,7 +228,7 @@ repo_owner = "Nathaniel-A-Miller"
 repo_name = "polls"
 file_path = "polls.csv"
 
-url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
+url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
 params = {"path": file_path, "page": 1, "per_page": 1}
 
 try:
