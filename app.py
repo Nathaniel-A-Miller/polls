@@ -66,7 +66,7 @@ for poll in selected_pollsters:
             mode="lines",
             name=poll,
             line=dict(dash="dot", width=1),
-            opacity=0.4,
+            opacity=0.6,
             hoverinfo="x+y+name",
         )
     )
