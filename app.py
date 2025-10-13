@@ -15,33 +15,26 @@ if not required_cols.issubset(df.columns):
     st.error(f"CSV must contain columns: {', '.join(required_cols)}")
     st.stop()
 
-# Convert date column to datetime (already a single date)
+# Convert date column to datetime
 df["date"] = pd.to_datetime(df["date"])
 
 # --- Sidebar: pollster selection ---
-# Inject CSS to make multiselect taller
-st.markdown(
-    """
-    <style>
-    .css-1siy2j7 {
-        max-height: 400px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 pollsters = sorted(df["pollster"].unique())
-selected_pollsters = st.sidebar.multiselect(
-    "Select pollsters to include:",
-    pollsters,
-    default=pollsters
-)
+
+st.sidebar.markdown("### Select polls to include:")
+
+# Use checkboxes so all pollsters are always visible
+selected_pollsters_dict = {}
+for poll in pollsters:
+    selected_pollsters_dict[poll] = st.sidebar.checkbox(poll, value=True)
+
+# Build list of selected pollsters
+selected_pollsters = [poll for poll, selected in selected_pollsters_dict.items() if selected]
 
 # Filter data based on selection
 filtered_df = df[df["pollster"].isin(selected_pollsters)]
 
-# --- Compute daily average and apply exponential smoothing ---
+# --- Exponential smoothing ---
 daily_avg = (
     filtered_df.groupby("date")["Approve"]
     .mean()
@@ -49,22 +42,22 @@ daily_avg = (
     .sort_values("date")
 )
 
-# Exponential smoothing (span controls smoothness)
+# Smoothing span slider
 span_value = st.sidebar.slider("Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5)
 daily_avg["smoothed"] = daily_avg["average"].ewm(span=span_value, adjust=False).mean()
 
 # --- Plot ---
 fig, ax = plt.subplots(figsize=(12, 6))
 
-# Plot each pollster as a faint dashed line
+# Plot each pollster as faint dashed line
 for poll in selected_pollsters:
     sub = filtered_df[filtered_df["pollster"] == poll]
     ax.plot(sub["date"], sub["Approve"], linestyle="--", alpha=0.4, label=poll)
 
-# Plot raw average as thin line
+# Plot raw average as thin red line
 ax.plot(daily_avg["date"], daily_avg["average"], color="red", linewidth=1.5, label="Average")
 
-# Plot smoothed average as thick line
+# Plot smoothed average as thick blue line
 ax.plot(daily_avg["date"], daily_avg["smoothed"], color="blue", linewidth=2.5, label="Smoothed Average")
 
 ax.set_title("Trump Approval Polling Average")
