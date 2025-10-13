@@ -6,7 +6,7 @@ from datetime import datetime
 
 # --- Get last updated date from GitHub ---
 def get_last_updated(repo_owner, repo_name, file_path):
-    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
+    url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
     params = {"path": file_path, "page": 1, "per_page": 1}
     response = requests.get(url, params=params)
     if response.status_code == 200 and response.json():
