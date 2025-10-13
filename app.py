@@ -61,9 +61,9 @@ st.sidebar.markdown("### Select polls to include:")
 
 # Initialize session state
 if "select_all" not in st.session_state:
-    st.session_state["select_all"] = True
+    st.session_state["select_all"] = False
 if "best538" not in st.session_state:
-    st.session_state["best538"] = False
+    st.session_state["best538"] = True
 
 # --- Sidebar buttons stacked vertically ---
 if st.sidebar.button("Select All"):
