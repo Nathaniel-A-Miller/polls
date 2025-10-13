@@ -220,9 +220,20 @@ st.plotly_chart(fig, use_container_width=True)
 # Foonote on "538 Best Pollsters" button
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
-
 # display data last updated
+def get_last_updated(repo_owner, repo_name, file_path):
+    url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
+    params = {"path": file_path, "page": 1, "per_page": 1}
+    response = requests.get(url, params=params)
+    if response.status_code == 200 and response.json():
+        commit_date = response.json()[0]["commit"]["committer"]["date"]
+        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00"))
+        # Format: October 13, 2025, 09:42 UTC
+        return dt.strftime("%B %d, %Y, %H:%M %Z")
+    return "Unknown"
 
+last_updated = get_last_updated("yourusername", "yourrepo", "polls.csv")
+st.markdown(f"📅 **Data last updated:** {last_updated}")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
