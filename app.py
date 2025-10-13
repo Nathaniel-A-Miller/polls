@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
 import requests
-from datetime import datetime, timezone
+from datetime import datetime
 
 # --- Best-ranked pollsters ---
 best_ranked_pollsters = [
@@ -221,27 +221,15 @@ st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeig
 
 # Get and display last data update time
 def get_last_updated(repo_owner, repo_name, file_path):
-    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
+    url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
     params = {"path": file_path, "page": 1, "per_page": 1}
-
-    try:
-        response = requests.get(url, params=params)
-        response.raise_for_status()
-        data = response.json()
-
-        if not data:
-            return "Unknown"
-
-        commit_date = data[0]["commit"]["committer"]["date"]
-
-        # Convert to datetime with named UTC timezone
-        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00")).astimezone(ZoneInfo("UTC"))
-
-        # Format nicely
-        return dt.strftime("%B %d, %Y, %H:%M %Z")  # Will now show UTC properly
-
-    except requests.RequestException:
-        return "Unknown"
+    response = requests.get(url, params=params)
+    if response.status_code == 200 and response.json():
+        commit_date = response.json()[0]["commit"]["committer"]["date"]
+        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00"))
+        # Format: October 13, 2025, 09:42 UTC
+        return dt.strftime("%B %d, %Y, %H:%M %Z")
+    return "Unknown"
 
 # Example usage in Streamlit
 last_updated = get_last_updated("Nathaniel-A-Miller", "polls", "polls.csv")
