@@ -61,23 +61,19 @@ if "select_all" not in st.session_state:
 if "best538" not in st.session_state:
     st.session_state["best538"] = False
 
-# --- Sidebar buttons ---
-col1, col2, col3 = st.sidebar.columns(3)
+# --- Sidebar buttons stacked vertically ---
+if st.sidebar.button("Select All"):
+    st.session_state["select_all"] = True
+    st.session_state["best538"] = False
 
-with col1:
-    if st.button("Select All"):
-        st.session_state["select_all"] = True
-        st.session_state["best538"] = False
+if st.sidebar.button("Deselect All"):
+    st.session_state["select_all"] = False
+    st.session_state["best538"] = False
 
-with col2:
-    if st.button("Deselect All"):
-        st.session_state["select_all"] = False
-        st.session_state["best538"] = False
+if st.sidebar.button("538 Best pollsters"):
+    st.session_state["select_all"] = False
+    st.session_state["best538"] = True
 
-with col3:
-    if st.button("538 Best pollsters"):
-        st.session_state["select_all"] = False
-        st.session_state["best538"] = True
 
 # --- Checkbox list ---
 selected_pollsters_dict = {}
