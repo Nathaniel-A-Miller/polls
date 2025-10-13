@@ -116,6 +116,17 @@ daily_avg_disapprove = (
 )
 daily_avg_disapprove["smoothed"] = daily_avg_disapprove["average"].ewm(span=span_value, adjust=False).mean()
 
+# --- Compute latest averages ---
+latest_date = daily_avg_approve["date"].max()
+latest_approve = daily_avg_approve.loc[daily_avg_approve["date"] == latest_date, "smoothed"].values[0]
+latest_disapprove = daily_avg_disapprove.loc[daily_avg_disapprove["date"] == latest_date, "smoothed"].values[0]
+
+# --- Display latest values in two columns ---
+st.subheader("Most Recent Smoothed Averages")
+colA, colB = st.columns(2)
+colA.metric(label="Approval", value=f"{latest_approve:.1f}%")
+colB.metric(label="Disapproval", value=f"{latest_disapprove:.1f}%")
+
 # --- Plotly figure ---
 fig = go.Figure()
 
