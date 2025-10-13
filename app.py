@@ -4,6 +4,15 @@ import plotly.graph_objects as go
 
 # --- Best-ranked pollsters ---
 best_ranked_pollsters = [
+    "Ipsos",
+    "Reuters/Ipsos",
+    "NBC News",
+    "FOX News",
+    "Wall Street Journal",
+    "IBD/TIPP",
+    "Gallup",
+    "Economist/YouGov",
+    "ABC/Wash Post/Ipos",
     "NY Times/Siena",
     "SurveyUSA",
     "Marquette",
