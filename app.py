@@ -224,8 +224,8 @@ st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeig
 # st.markdown(f"📅 **Data last updated:** {last_updated}")
 
 # --- GitHub API: Get last update time for polls.csv ---
-repo_owner = "YOUR_GITHUB_USERNAME"
-repo_name = "YOUR_REPO_NAME"
+repo_owner = "Nathaniel-A-Miller"
+repo_name = "polls"
 file_path = "polls.csv"
 
 url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
