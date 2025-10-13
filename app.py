@@ -3,7 +3,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import requests
 from datetime import datetime, timezone
-import os
+from zoneinfo import ZoneInfo
 
 # --- Best-ranked pollsters ---
 best_ranked_pollsters = [
@@ -220,38 +220,33 @@ st.plotly_chart(fig, use_container_width=True)
 # Foonote on "538 Best Pollsters" button
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
-import requests
-from datetime import datetime
-from zoneinfo import ZoneInfo
-
+# Get and display last data update time
 def get_last_updated(repo_owner, repo_name, file_path):
     url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
     params = {"path": file_path, "page": 1, "per_page": 1}
-    
+
     try:
         response = requests.get(url, params=params)
-        response.raise_for_status()  # Raise error if not 200
+        response.raise_for_status()
         data = response.json()
-        
+
         if not data:
             return "Unknown"
-        
-        # Get the commit date
+
         commit_date = data[0]["commit"]["committer"]["date"]
-        
-        # Convert to timezone-aware datetime in UTC
+
+        # Convert to datetime with named UTC timezone
         dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00")).astimezone(ZoneInfo("UTC"))
-        
+
         # Format nicely
-        return dt.strftime("%B %d, %Y, %H:%M %Z")
-    
+        return dt.strftime("%B %d, %Y, %H:%M %Z")  # Will now show UTC properly
+
     except requests.RequestException:
         return "Unknown"
 
-# Usage in Streamlit
+# Example usage in Streamlit
 last_updated = get_last_updated("Nathaniel-A-Miller", "polls", "polls.csv")
 st.markdown(f"📅 **Data last updated:** {last_updated}")
-
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
