@@ -121,11 +121,24 @@ latest_date = daily_avg_approve["date"].max()
 latest_approve = daily_avg_approve.loc[daily_avg_approve["date"] == latest_date, "smoothed"].values[0]
 latest_disapprove = daily_avg_disapprove.loc[daily_avg_disapprove["date"] == latest_date, "smoothed"].values[0]
 
-# --- Display latest values in two columns ---
-st.subheader("Most Recent Smoothed Averages")
-colA, colB = st.columns(2)
-colA.metric(label="Approval", value=f"{latest_approve:.1f}%")
-colB.metric(label="Disapproval", value=f"{latest_disapprove:.1f}%")
+# --- Display latest values in color ---
+st.markdown(
+    f"""
+    <div style='text-align:center;'>
+        <h4>Most Recent Smoothed Averages</h4>
+        <div style='display:flex; justify-content:center; gap:80px;'>
+            <div style='color:blue; font-size:24px;'>
+                <b>Approval:</b> {latest_approve:.1f}%
+            </div>
+            <div style='color:red; font-size:24px;'>
+                <b>Disapproval:</b> {latest_disapprove:.1f}%
+            </div>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # --- Plotly figure ---
 fig = go.Figure()
