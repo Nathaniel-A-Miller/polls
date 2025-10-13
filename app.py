@@ -234,6 +234,8 @@ params = {"path": file_path, "page": 1, "per_page": 1}
 try:
     r = requests.get(url, params=params)
     r.raise_for_status()
+    st.write(f"Status code: {r.status_code}")
+    st.write(commit_data)
     commit_data = r.json()
 
     if commit_data:
@@ -249,9 +251,6 @@ try:
 
 except Exception as e:
     st.write("⚠️ Could not fetch last update time.")
-    st.write(f"Status code: {r.status_code}")
-    st.write(commit_data)
-
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
