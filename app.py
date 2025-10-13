@@ -74,7 +74,7 @@ if st.sidebar.button("Deselect All"):
     st.session_state["select_all"] = False
     st.session_state["best538"] = False
 
-if st.sidebar.button("538 Best pollsters"):
+if st.sidebar.button("538 Best pollsters¹"):
     st.session_state["select_all"] = False
     st.session_state["best538"] = True
 
@@ -213,6 +213,9 @@ fig.update_layout(
 
 # Display chart
 st.plotly_chart(fig, use_container_width=True)
+
+# Foonote on "538 Best Pollsters" button
+st.write("¹ Best pollsters selected from here: https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
