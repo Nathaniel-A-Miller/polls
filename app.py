@@ -12,7 +12,7 @@ best_ranked_pollsters = [
     "IBD/TIPP",
     "Gallup",
     "Economist/YouGov",
-    "ABC/Wash Post/Ipos",
+    "ABC/Wash Post/Ipsos",
     "NY Times/Siena",
     "SurveyUSA",
     "Marquette",
