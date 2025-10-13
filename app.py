@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 # --- Page layout ---
 st.set_page_config(layout="wide")
@@ -26,7 +26,6 @@ df["date"] = pd.to_datetime(df["date"])
 
 # --- Sidebar: pollster selection ---
 pollsters = sorted(df["pollster"].unique())
-
 st.sidebar.markdown("### Select polls to include:")
 
 # Use checkboxes so all pollsters are always visible
@@ -49,32 +48,72 @@ daily_avg = (
 )
 
 # Smoothing span slider
-span_value = st.sidebar.slider("Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5)
+span_value = st.sidebar.slider(
+    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5
+)
 daily_avg["smoothed"] = daily_avg["average"].ewm(span=span_value, adjust=False).mean()
 
-# --- Plot ---
-fig, ax = plt.subplots(figsize=(12, 6))
+# --- Plotly figure ---
+fig = go.Figure()
 
 # Plot each pollster as faint dashed line
 for poll in selected_pollsters:
     sub = filtered_df[filtered_df["pollster"] == poll]
-    ax.plot(sub["date"], sub["Approve"], linestyle="--", alpha=0.4, label=poll)
+    fig.add_trace(
+        go.Scatter(
+            x=sub["date"],
+            y=sub["Approve"],
+            mode="lines",
+            name=poll,
+            line=dict(dash="dot", width=1),
+            opacity=0.4,
+            hoverinfo="x+y+name",
+        )
+    )
 
 # Plot raw average as thin red line
-ax.plot(daily_avg["date"], daily_avg["average"], color="red", linewidth=1.5, label="Average")
+fig.add_trace(
+    go.Scatter(
+        x=daily_avg["date"],
+        y=daily_avg["average"],
+        mode="lines",
+        name="Average",
+        line=dict(color="red", width=2),
+        hoverinfo="x+y+name",
+    )
+)
 
 # Plot smoothed average as thick blue line
-ax.plot(daily_avg["date"], daily_avg["smoothed"], color="blue", linewidth=2.5, label="Smoothed Average")
+fig.add_trace(
+    go.Scatter(
+        x=daily_avg["date"],
+        y=daily_avg["smoothed"],
+        mode="lines",
+        name="Smoothed Average",
+        line=dict(color="blue", width=3),
+        hoverinfo="x+y+name",
+    )
+)
 
-ax.set_title("Trump Approval Polling Average")
-ax.set_xlabel("Date")
-ax.set_ylabel("Approve %")
-ax.grid(True)
+# Update layout
+fig.update_layout(
+    title="Trump Approval Polling Average",
+    xaxis_title="Date",
+    yaxis_title="Approve %",
+    hovermode="x unified",
+    legend=dict(
+        y=0.5,
+        x=1.05,
+        xanchor="left",
+        yanchor="middle",
+        bordercolor="LightGray",
+        borderwidth=1,
+    ),
+    margin=dict(l=50, r=150, t=80, b=50),
+)
 
-# External legend
-ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-
-st.pyplot(fig)
+# Display interactive Plotly chart in Streamlit
+st.plotly_chart(fig, use_container_width=True)
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
