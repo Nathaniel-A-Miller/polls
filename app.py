@@ -89,6 +89,7 @@ fig.update_layout(
     xaxis_title="Date",
     yaxis_title="Approve %",
     hovermode="x unified",
+    height=700,
     legend=dict(
         orientation="h",   # horizontal legend
         y=-0.3,            # below the chart
