@@ -221,7 +221,7 @@ st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeig
 
 # Get and display last data update time
 def get_last_updated(repo_owner, repo_name, file_path):
-    url = f"https://api.github.com/repos/Nathaniel-A-Miller/polls/commits"
+    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
     params = {"path": file_path, "page": 1, "per_page": 1}
     response = requests.get(url, params=params)
     if response.status_code == 200 and response.json():
