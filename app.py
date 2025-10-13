@@ -26,28 +26,45 @@ df["date"] = pd.to_datetime(df["date"])
 
 # --- Sidebar: pollster selection ---
 pollsters = sorted(df["pollster"].unique())
-st.sidebar.markdown("### Select polls to include:")
 
-# --- Select All / Deselect All buttons ---
-if "select_all" not in st.session_state:
-    st.session_state["select_all"] = True  # default all selected
+best_ranked_pollsters = [
+    "NY Times/Siena",
+    "SurveyUSA",
+    "Marquette",
+    "Atlas Intel",
+    "Cygnal",
+    "I&I/TIPP",
+    "Emerson",
+    "CBS News",
+    "Quinnipiac",
+    "University of Connecticut",
+    "YouGov",
+    "Elon University",
+]
 
-col1, col2 = st.sidebar.columns(2)
-with col1:
-    if st.button("Select All"):
-        st.session_state["select_all"] = True
-with col2:
-    if st.button("Deselect All"):
-        st.session_state["select_all"] = False
+st.sidebar.markdown("### Pollster selection:")
 
-# --- Checkbox list ---
-selected_pollsters_dict = {}
+# Initialize dictionary for checkbox states
+if "selected_pollsters_dict" not in st.session_state:
+    st.session_state.selected_pollsters_dict = {poll: True for poll in pollsters}
+
+# Buttons for selection
+col1, col2, col3 = st.sidebar.columns(3)
+if col1.button("Select all"):
+    st.session_state.selected_pollsters_dict = {poll: True for poll in pollsters}
+if col2.button("Deselect all"):
+    st.session_state.selected_pollsters_dict = {poll: False for poll in pollsters}
+if col3.button("538 Best-ranked pollsters"):
+    st.session_state.selected_pollsters_dict = {poll: (poll in best_ranked_pollsters) for poll in pollsters}
+
+# Display checkboxes
 for poll in pollsters:
-    default = st.session_state["select_all"]
-    selected_pollsters_dict[poll] = st.sidebar.checkbox(poll, value=default)
+    st.session_state.selected_pollsters_dict[poll] = st.sidebar.checkbox(
+        poll, value=st.session_state.selected_pollsters_dict.get(poll, True)
+    )
 
-# List of pollsters currently selected
-selected_pollsters = [poll for poll, selected in selected_pollsters_dict.items() if selected]
+# Build list of selected pollsters
+selected_pollsters = [poll for poll, selected in st.session_state.selected_pollsters_dict.items() if selected]
 
 # Filter data based on selection
 filtered_df = df[df["pollster"].isin(selected_pollsters)]
@@ -61,61 +78,49 @@ daily_avg = (
 )
 
 # Smoothing span slider
-span_value = st.sidebar.slider(
-    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5
-)
+span_value = st.sidebar.slider("Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5)
 daily_avg["smoothed"] = daily_avg["average"].ewm(span=span_value, adjust=False).mean()
 
 # --- Plotly figure ---
 fig = go.Figure()
 
-# Plot each pollster as faint dashed line with less transparency
+# Background pollster lines
 for poll in selected_pollsters:
     sub = filtered_df[filtered_df["pollster"] == poll]
-    fig.add_trace(
-        go.Scatter(
-            x=sub["date"],
-            y=sub["Approve"],
-            mode="lines",
-            name=poll,
-            line=dict(dash="dot", width=1),
-            opacity=0.6,
-            hoverinfo="x+y+name",
-        )
-    )
-
-# Plot smoothed average as thick blue line
-fig.add_trace(
-    go.Scatter(
-        x=daily_avg["date"],
-        y=daily_avg["smoothed"],
+    fig.add_trace(go.Scatter(
+        x=sub["date"], y=sub["Approve"], 
         mode="lines",
-        name="Smoothed Average",
-        line=dict(color="blue", width=3),
-        hoverinfo="x+y+name",
-    )
-)
+        name=poll,
+        line=dict(dash="dash", width=1, color="gray"),
+        opacity=0.4,
+        hoverinfo="name+y"
+    ))
 
-# Update layout with mobile-friendly legend below the chart
+# Smoothed average line
+fig.add_trace(go.Scatter(
+    x=daily_avg["date"], y=daily_avg["smoothed"],
+    mode="lines+markers",
+    name="Smoothed Average",
+    line=dict(color="blue", width=3),
+    hoverinfo="x+y"
+))
+
 fig.update_layout(
     title="Trump Approval Polling Average",
     xaxis_title="Date",
     yaxis_title="Approve %",
     hovermode="x unified",
-    height=700,  # taller for mobile readability
     legend=dict(
-        orientation="h",
-        y=-0.3,
-        x=0.5,
+        orientation="h",  # horizontal
+        yanchor="bottom",
+        y=-0.3,          # below chart
         xanchor="center",
-        yanchor="top",
-        bordercolor="LightGray",
-        borderwidth=1,
+        x=0.5
     ),
-    margin=dict(l=50, r=50, t=80, b=120),
+    margin=dict(l=50, r=50, t=80, b=100),
+    height=600
 )
 
-# Display interactive Plotly chart in Streamlit
 st.plotly_chart(fig, use_container_width=True)
 
 # Optional: show filtered data
