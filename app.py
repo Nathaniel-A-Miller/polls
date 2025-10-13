@@ -8,7 +8,7 @@ st.title("Trump Poll Average Dashboard")
 
 # --- Information box ---
 st.info(
-    "Mobile users: click on the double carrot >> on the upper left-hand side of your screen "
+    "Mobile users: click on the double carrot >> on the upper-left-hand side of your screen "
     "to expand the poll selection checkbox menu. The exponential smoothing selector is at the bottom of that list."
 )
 
