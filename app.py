@@ -234,6 +234,10 @@ if github_token:
     headers["Authorization"] = f"token {github_token}"
 
 # --- Fetch last updated time ---
+repo_owner = "Nathaniel-A-Miller"
+repo_name = "polls"
+file_path = "polls.csv"
+
 try:
     url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
     params = {"path": file_path, "page": 1, "per_page": 1}
