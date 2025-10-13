@@ -53,10 +53,6 @@ if not required_cols.issubset(df.columns):
 # Convert date column to datetime
 df["date"] = pd.to_datetime(df["date"])
 
-# --- Add Disapprove column if not present ---
-if "Disapprove" not in df.columns:
-    df["Disapprove"] = 100 - df["Approve"]
-
 # --- Sidebar: pollster selection ---
 pollsters = sorted(df["pollster"].unique())
 st.sidebar.markdown("### Select polls to include:")
@@ -97,7 +93,7 @@ filtered_df = df[df["pollster"].isin(selected_pollsters)]
 
 # --- Exponential smoothing ---
 span_value = st.sidebar.slider(
-    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=5
+    "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=10
 )
 
 # Approval averages
