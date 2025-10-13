@@ -50,8 +50,10 @@ ax.plot(daily_avg["date"], daily_avg["average"], color="red", linewidth=2.5, lab
 ax.set_title("Trump Approval Polling Average")
 ax.set_xlabel("Date")
 ax.set_ylabel("Approve %")
-ax.legend()
 ax.grid(True)
+
+# Move legend outside to the right
+ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
 st.pyplot(fig)
 
