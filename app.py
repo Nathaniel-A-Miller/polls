@@ -217,38 +217,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
 # Last updated
-
-def get_last_updated(repo_owner, repo_name, file_path):
-    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits"
-    params = {"path": file_path, "page": 1, "per_page": 1}
-
-    try:
-        response = requests.get(url, params=params)
-        response.raise_for_status()
-        data = response.json()
-
-        if not data:
-            return None, "Unknown" # Return None for data and "Unknown" for formatted date
-
-        commit_date = data[0]["commit"]["committer"]["date"]
-        dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00")).astimezone(ZoneInfo("UTC"))
-        formatted_date = dt.strftime("%B %d, %Y, %H:%M %Z")
-        return data, formatted_date # Return both data and formatted date
-
-    except requests.RequestException as e:
-        print("Request failed:", e)
-        return None, "Unknown"
-
-# Call the function to get the data and formatted date
-data, last_updated = get_last_updated("Nathaniel-A-Miller", "polls", "polls.csv")
-
-# Check if data was successfully retrieved before attempting to parse
-if data:
-    commit_date = data[0]["commit"]["committer"]["date"]
-    dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00")).astimezone(ZoneInfo("UTC"))
-    st.write("Data last updated:", dt.strftime("%B %d, %Y, %H:%M %Z"))
-else:
-    st.write("Could not retrieve commit data.")
+st.write("Data last updated: October 13, 4:10PM MDT")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
