@@ -250,7 +250,7 @@ if data:
 else:
     st.write("Could not retrieve commit data.")
 
-st.write(f"Data last updated: October 13, 2025")
+# st.write(f"Data last updated: October 13, 2025")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
