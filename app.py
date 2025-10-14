@@ -92,6 +92,11 @@ selected_pollsters = [poll for poll, selected in selected_pollsters_dict.items()
 # Filter data based on selection
 filtered_df = df[df["pollster"].isin(selected_pollsters)]
 
+# Handle case: no pollsters selected
+if filtered_df.empty:
+    st.warning("⚠️ No pollsters selected. Please choose at least one from the sidebar.")
+    st.stop()
+    
 # --- Exponential smoothing ---
 span_value = st.sidebar.slider(
     "Smoothing span (higher = smoother)", min_value=2, max_value=20, value=10
