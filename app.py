@@ -246,11 +246,9 @@ data, last_updated = get_last_updated("Nathaniel-A-Miller", "polls", "polls.csv"
 if data:
     commit_date = data[0]["commit"]["committer"]["date"]
     dt = datetime.fromisoformat(commit_date.replace("Z", "+00:00")).astimezone(ZoneInfo("UTC"))
-    st.write("Commit Date:", dt.strftime("%B %d, %Y, %H:%M %Z"))
+    st.write("Data last updated:", dt.strftime("%B %d, %Y, %H:%M %Z"))
 else:
     st.write("Could not retrieve commit data.")
-
-# st.write(f"Data last updated: October 13, 2025")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
