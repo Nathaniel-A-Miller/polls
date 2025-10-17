@@ -1,9 +1,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
-import requests
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 # --- Best-ranked pollsters ---
 best_ranked_pollsters = [
@@ -222,7 +219,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
 # Last updated
-st.write("Data last updated: October 16, 2025, 10:26AM MDT")
+st.write("Data last updated: October 17, 2025, 6:44AM MDT")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
