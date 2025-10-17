@@ -22,7 +22,7 @@ best_ranked_pollsters = [
     "Cygnal",
     "I&I/TIPP",
     "Emerson",
-    "Emerson College,"
+    "Emerson College",
     "CBS News",
     "Quinnipiac",
     "University of Connecticut",
