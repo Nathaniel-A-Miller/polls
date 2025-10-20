@@ -220,7 +220,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.write("¹ [FiveThirtyEight Pollster Ratings](https://github.com/fivethirtyeight/data/blob/master/pollster-ratings/2023/pollster-ratings.csv)")
 
 # Last updated
-st.write("Data last updated: October 17, 2025, 6:44AM MDT")
+st.write("Data last updated: October 19, 2025, 7:03PM MDT")
 
 # Optional: show filtered data
 with st.expander("Show filtered data"):
