@@ -1,4 +1,6 @@
 pollster,date,sample,Approve,Disapprove,spread
+Morning Consult,2025-10-19,2200 RV,46,51,Spread-5
+Rasmussen Reports,2025-10-19,1500 LV,48,50,Spread-2
 Daily Mail,2025-10-15,1004 RV,51,49,Spread+2
 Emerson College,2025-10-14,1000 RV,48,50,Spread-2
 Rasmussen Reports,2025-10-16,1500 LV,50,48,Spread+2
