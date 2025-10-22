@@ -1,4 +1,7 @@
 pollster,date,sample,Approve,Disapprove,spread
+Rasmussen Reports,2025-10-21,1500 LV,48,50,Spread-2
+Quinnipiac,2025-10-20,1327 RV,40,54,Spread-14
+Reuters/Ipsos,2025-10-20,4385 A,42,56,Spread-14
 Economist/YouGov,2025-10-20,1448 RV,43,55,Spread-12
 Morning Consult,2025-10-19,2200 RV,46,51,Spread-5
 Rasmussen Reports,2025-10-19,1500 LV,48,50,Spread-2
